@@ -150,6 +150,13 @@ RotationItem:
       type: string
       description: The owning user's id.
       example: 58a59f25e6351a94385a9233
+    status:
+      type: string
+      description: >-
+        This property only exists if the rotationItem had been created but
+        the song has not yet been processed.  possible values are:
+          * 'song is being processed'
+      example: "song is being processed"
     eom:
       type: integer
       example: 180000
@@ -188,6 +195,41 @@ RotationItem:
             type: string
             format: date-time
             example: '2017-02-16T12:46:19.360Z'
+RotationItemsCount:
+  type: object
+  properties:
+    binCounts:
+      type: object
+      description: |
+       These bins correspond to how often the song gets played. 'heavy' songs
+       are played the most often, while 'light' songs are played relatively rarely
+      properties:
+        light:
+          type: integer
+          example: 60
+        medium:
+          type: integer
+          example: 40
+        heavy:
+          type: integer
+          example: 20
+    inactive:
+      type: integer
+      description: |
+        'inactive' songs have either been deleted at some point or
+        are pending song acquisition.
+      example: 6
+    processing:
+      type: integer
+      description: |
+        These songs are being processed -- processing usually takes between 1 and 20
+        secs but sometimes can take 24 hours.
+      example: 5
+    stationMinimum:
+      type: integer
+      description: |
+        The minimum number of songs your station needs in order to operate.
+      example: 100 
 RotationItems:
   type: array
   items:
