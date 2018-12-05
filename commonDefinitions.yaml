@@ -213,6 +213,11 @@ RotationItemsCount:
         heavy:
           type: integer
           example: 20
+    active:
+      type: integer
+      description: |
+        'active' songs are the total number of rotationItems on the station.
+      example: 120
     inactive:
       type: integer
       description: |
